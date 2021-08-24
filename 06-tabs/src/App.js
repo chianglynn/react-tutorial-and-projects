@@ -32,7 +32,7 @@ function App() {
     );
   }
 
-  const { id, title, dates, duties, company } = jobs[value];
+  const { title, dates, duties, company } = jobs[value];
 
   return (
     <section className="section">
