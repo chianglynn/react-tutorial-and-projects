@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import Photo from './Photo';
 
@@ -9,15 +9,16 @@ const searchUrl = `https://api.unsplash.com/search/photos/`;
 function App() {
   const [loading, setLoading] = useState(true);
   const [photos, setPhotos] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setPage(1);
+    fetchImages();
   };
 
-  const fetchImages = useCallback(async () => {
+  const fetchImages = async () => {
     setLoading(true);
 
     const urlPage = `&page=${page}`;
@@ -42,18 +43,20 @@ function App() {
       setLoading(false);
       console.error(error);
     }
-  }, [page]);
+  };
 
   useEffect(() => {
     fetchImages();
-  }, [page, fetchImages]);
+    // eslint-disable-next-line
+  }, [page]);
 
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
       if ((!loading && window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2) setPage(oldPage => oldPage + 1);
     });
     return () => window.removeEventListener('scroll', event);
-  }, [loading]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <main>
