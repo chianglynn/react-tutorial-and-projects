@@ -4,7 +4,13 @@ import Home from './Home';
 import SingleMovie from './SingleMovie';
 
 function App() {
-  return <h2>movie DB starter</h2>
+  return (
+    <Switch>
+      <Route exact path="/"><Home /></Route>
+      {/* <Route path="/movies/:id"><SingleMovie/></Route> */}
+      <Route path="/movies/:id" children={<SingleMovie />} />
+    </Switch>
+  );
 }
 
 export default App;

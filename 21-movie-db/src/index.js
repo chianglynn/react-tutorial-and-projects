@@ -8,7 +8,9 @@ import './index.css';
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')
