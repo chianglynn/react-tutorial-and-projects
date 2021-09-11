@@ -32,8 +32,20 @@ const GithubProvider = ({ children }) => {
         if (response) {
             setGithubUser(response.data);
             const { login, followers_url } = response.data;
-            axios(`${rootUrl}/users/${login}/repos?per_page=100`).then(({ data }) => setRepos(data));
-            axios(`${followers_url}?per_page=100`).then(({ data }) => setFollowers(data));
+
+            // Solution 1
+            // repos
+            // await axios(`${rootUrl}/users/${login}/repos?per_page=100`).then(({ data }) => setRepos(data));
+            // // followers
+            // await axios(`${followers_url}?per_page=100`).then(({ data }) => setFollowers(data));
+
+            // Solution 2
+            await Promise.allSettled([axios(`${rootUrl}/users/${login}/repos?per_page=100`), axios(`${followers_url}?per_page=100`)]).then(results => {
+                const [repos, followers] = results;
+                const status = 'fulfilled';
+                if (repos.status === status) setRepos(repos.value.data);
+                if (followers.status === status) setFollowers(followers.value.data);
+            });
         } else {
             toggleError(true, 'username not found.');
         }
