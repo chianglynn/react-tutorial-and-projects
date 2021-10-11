@@ -10,11 +10,12 @@ function App() {
 
   const fetchTours = async () => {
     setIsLoading(true);
+
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setIsLoading(false);
       setTours(data);
+      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -28,7 +29,7 @@ function App() {
 
   useEffect(() => {
     fetchTours();
-  }, [])
+  }, []);
 
   if (isLoading) {
     return (
