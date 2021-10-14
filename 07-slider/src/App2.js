@@ -8,9 +8,7 @@ function App() {
     const [people, setPeople] = useState(data);
     const [index, setIndex] = useState(0);
 
-    const prevSlide = () => {
-        setIndex(index <= 0 ? people.length - 1 : index - 1);
-    };
+    const prevSlide = () => setIndex(index <= 0 ? people.length - 1 : index - 1);
 
     // Reference: https://ithelp.ithome.com.tw/articles/10225504
     const nextSlide = useCallback(() => {
