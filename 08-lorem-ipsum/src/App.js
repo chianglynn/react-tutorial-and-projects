@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import data from './data';
 
 function App() {
-  console.log(data.length);
   // Solution 1
   const [count, setCount] = useState(0);
+
   // Solution 2
   // const [count, setCount] = useState(1);
+
   const [text, setText] = useState([]);
 
   const handleSubmit = (e) => {
@@ -15,6 +16,7 @@ function App() {
 
     // Solution 1
     if (amount <= 0) amount = 1;
+
     if (amount > data.length) amount = data.length;
 
     setText(data.slice(0, amount));
