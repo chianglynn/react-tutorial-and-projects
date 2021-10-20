@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SingleColor from './SingleColor';
-import Values from 'values.js';
+import Values from 'values.js'; // https://noeldelgado.github.io/values.js/
 
 function App() {
   const defaultColor = '#f15025';
