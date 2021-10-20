@@ -79,7 +79,7 @@ function App() {
           <button className="clear-btn" onClick={clearList}>clear items</button>
         </div>}
     </section>
-  )
+  );
 }
 
 export default App;
