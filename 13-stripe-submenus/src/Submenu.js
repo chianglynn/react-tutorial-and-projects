@@ -6,6 +6,7 @@ const Submenu = () => {
   const container = useRef(null);
 
   const [columns, setColumns] = useState('col-2');
+
   useEffect(() => {
     setColumns('col-2');
     const { center, bottom } = location;
@@ -20,10 +21,10 @@ const Submenu = () => {
   return (
     <aside className={`submenu ${isSubmenuOpen && 'show'}`} ref={container}>
       <h4>{page}</h4>
-      <div className={`submenu-center ${columns} `}>
+      <div className={`submenu-center ${columns}`}>
         {links.map((link, index) => {
           const { label, icon, url } = link;
-          return <a href={url} key={index}>{icon}{label}</a>
+          return <a href={url} key={index}>{icon}{label}</a>;
         })}
       </div>
     </aside>
