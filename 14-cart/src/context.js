@@ -21,7 +21,6 @@ const AppProvider = ({ children }) => {
     const response = await fetch(url);
     const data = await response.json();
     dispatch({ type: 'DISPLAY_ITEMS', payload: data });
-
   };
   const clearCart = () => dispatch({ type: 'CLEAR_CART' });
   const remove = (id) => dispatch({ type: 'REMOVE', payload: id });
